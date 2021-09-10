@@ -1,0 +1,15 @@
+version: "3"
+services:
+  lisk-node:
+    build:
+      context: ./docker
+    volumes:
+      - ./.lisk:/home/lisk/.lisk
+      - ./config:/home/lisk/config
+    environment:
+      - CONSOLE_LOG_LEVEL=info
+      - FILE_LOG_LEVELE=error
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
